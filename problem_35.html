@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+<title>Problem 35</title>
+</head>
+<body>
+    <script>
+		function isPrime(num) {
+			var sqrt = Math.sqrt(num);
+			for (var i = 2; i <= sqrt; i++)
+				if (num % i == 0)
+					return false;
+			return true;
+		}
+		
+		function checkRotation(num){
+			var numStr = String(num);
+			for (var i = 0; i < numStr.length; i++) {
+				numStr = numStr.slice(1, numStr.length) + numStr.charAt(0);
+				if (!isPrime(Number(numStr)))
+					return false;		
+			}
+			return true;
+		}
+		
+		var num = 3, count = 0;
+		while (num < 1000000) {
+			if (checkRotation(num) && isPrime(num))
+				count++;
+			num += 2;
+		}
+		console.log(count+1);
+	
+    </script>
+</body>
+</html>
