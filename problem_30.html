@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+<title>Problem 30</title>
+</head>
+<body>
+    <script>
+		var res = 0;
+		for (var i = 2; i < 1000000; i++) {
+			sumPowers = 0;
+			num = i.toString(); 
+			for (var j = 0; j < num.length; j++)
+				sumPowers += Math.pow(num[j], 5);
+			if (sumPowers == i) 
+				res += i;
+		}
+		console.log(res);
+    </script>
+</body>
+</html>
