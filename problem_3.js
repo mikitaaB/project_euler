@@ -1,10 +1,13 @@
-var div = 2;
-var num = 600851475143;
-while(num > 1){
-	if(num % div === 0) {
-		num /= div;
-	} else {
-		div++;
+const largestPrimeFactor = () => {
+	let div = 2;
+	let num = 600851475143;
+	while (num > 1) {
+		if (num % div === 0) {
+			num /= div;
+		} else {
+			div++;
+		}
 	}
+	return div;
 }
-console.log(div);
+console.log(largestPrimeFactor());
