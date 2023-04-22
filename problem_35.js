@@ -1,27 +1,45 @@
-function isPrime(num) {
-	var sqrt = Math.sqrt(num);
-	if (num % 2 == 0)
-		return false;
-	for (var i = 3; i <= sqrt; i+=2)
-		if (num % i == 0)
-			return false;
-	return true;
-}
+console.time('FirstWay');
 
-function checkRotation(num){
-	var numStr = String(num);
-	for (var i = 0; i < numStr.length; i++) {
-		numStr = numStr.slice(1, numStr.length) + numStr.charAt(0);
-		if (!isPrime(Number(numStr)))
+const isPrime = num => {
+	if (num % 2 == 0) {
+		return false;
+	}
+	for (let i = 3; i ** 2 <= num; i += 2) {
+		if (num % i == 0) {
 			return false;
+		}
 	}
 	return true;
 }
 
-var num = 3, count = 0;
-while (num < 1000000) {
-	if (checkRotation(num) && isPrime(num))
-		count++;
-	num += 2;
+const checkRotation = num => {
+	let numStr = num + "";
+	const numStrLength = numStr.length;
+	for (let i = 0; i < numStrLength; i++) {
+		numStr = numStr.slice(1, numStrLength) + numStr[0];
+		if (!isPrime(+numStr)) {
+			return false;
+		}
+	}
+	return true;
 }
-console.log(count+1);
+
+const getCircularPrimesCount = limit => {
+	if (limit < 0) {
+		return 0;
+	}
+	let num = 3, count = 1;
+	while (num < limit) {
+		if (isPrime(num) && checkRotation(num)) {
+			count++;
+		}
+		num += 2;
+	}
+	return count;
+}
+
+console.log(getCircularPrimesCount(1000000));
+
+
+
+console.timeEnd('FirstWay');
