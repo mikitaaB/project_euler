@@ -1,22 +1,25 @@
-function isPrime(num) {
-	let sqrt = Math.sqrt(num);
-	for (let i = 3; i <= sqrt; i += 2)
-		if (num % i == 0)
+const isPrime = num => {
+	for (let i = 3; i ** 2 <= num; i += 2) {
+		if (num % i == 0) {
 			return false;
+		}
+	}
 	return true;
 }
 
-function sumPrimesBeforeNumber(limit){
+const sumPrimesBeforeNumber = limit => {
 	let number = 3;
-	let sum = 0;
-	if (limit < number)
-		return 2;
+	if (limit < number) {
+		return 0;
+	}
+	let sum = 2;
 	while (number < limit) {
-		if (isPrime(number))
+		if (isPrime(number)) {
 			sum += number;
+		}
 		number += 2;
 	}
-	sum += 2;
 	return sum;
 }
+
 console.log(sumPrimesBeforeNumber(2000000));

@@ -8,15 +8,17 @@ const isPrime = num => {
 }
 
 const checkPrimeByIndex = newIndex => {
-	let index = 1;
-	let num = 1;
 	if (newIndex === 1) {
 		return 2;
 	}
-	while (index < newIndex) {
-		num += 2;
+	let index = 2;
+	let num = 3;
+	while (index <= newIndex) {
 		if (isPrime(num)) {
 			index++;
+		}
+		if (index <= newIndex) {
+			num += 2;
 		}
 	}
 	return num;
