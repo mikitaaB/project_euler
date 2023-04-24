@@ -1,11 +1,17 @@
-var res = 0;
-for (var i = 2; i < 1000000; i++) {
-	sumPowers = 0;
-	num = i.toString();
-	for (var j = 0; j < num.length; j++)
-		sumPowers += Math.pow(num[j], 5);
-	if (sumPowers == i) {
-		res += i;
+const getDigitFifthPowers = power => {
+	let res = 0;
+	for (let i = 1; i < 1000000; i++) {
+		sumPowers = 0;
+		num = i + "";
+		const numLength = num.length;
+		for (let j = 0; j < numLength; j++) {
+			sumPowers += num[j] ** power;
+		}
+		if (sumPowers === i) {
+			res += i;
+		}
 	}
+	return res;
 }
-console.log(res);
+
+console.log(getDigitFifthPowers(5));
