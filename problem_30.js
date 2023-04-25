@@ -1,6 +1,12 @@
-const getDigitFifthPowers = power => {
+const getMaxLimit = power => power * 9 ** power;
+
+const getDigitPowers = power => {
 	let res = 0;
-	for (let i = 1; i < 1000000; i++) {
+	if (!power) {
+		return res;
+	}
+	const maxLimit = getMaxLimit(power);
+	for (let i = 2; i < maxLimit; i++) {
 		sumPowers = 0;
 		num = i + "";
 		const numLength = num.length;
@@ -14,4 +20,4 @@ const getDigitFifthPowers = power => {
 	return res;
 }
 
-console.log(getDigitFifthPowers(5));
+console.log(getDigitPowers(5));
