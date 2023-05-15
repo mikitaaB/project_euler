@@ -3,7 +3,7 @@ const isPalindrome = mul => {
 	let copyMul = mul;
 	while (copyMul) {
 		revertMul = (copyMul % 10) + (revertMul * 10);
-		copyMul = (copyMul / 10) | 0;
+		copyMul = Math.floor(copyMul / 10);
 	}
 	return mul === revertMul;
 }

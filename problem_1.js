@@ -8,7 +8,7 @@ const getLastDivider = divider => {
 	return 0;
 }
 
-const getCountOfNum = (lastDiv, div) => ((lastDiv - div) / div + 1) | 0;
+const getCountOfNum = (lastDiv, div) => Math.floor((lastDiv - div) / div + 1);
 
 const getSumByDiv = (div, lastDiv, count) => ((div + lastDiv) / 2) * count;
 

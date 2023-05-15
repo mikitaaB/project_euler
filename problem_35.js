@@ -1,5 +1,3 @@
-console.time('FirstWay');
-
 const isPrime = num => {
 	if (num % 2 == 0) {
 		return false;
@@ -39,7 +37,3 @@ const getCircularPrimesCount = limit => {
 }
 
 console.log(getCircularPrimesCount(1000000));
-
-
-
-console.timeEnd('FirstWay');
