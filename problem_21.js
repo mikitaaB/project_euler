@@ -1,25 +1,33 @@
-function sumDivisors(num) {
-	var sum = 0;
-	for (var i = 0; i < num; i++)
-		if (num % i == 0)
-			sum += i;
+const getSumDivisors = num => {
+	if (num === 1) {
+		return num;
+	}
+	const root = Math.sqrt(num);
+	let sum = Number.isInteger(root) ? root : 1;
+	for (let i = 2; i < root; i++) {
+		if (num % i === 0) {
+			sum += num / i + i;
+		}
+	}
 	return sum;
 }
 
-function amicableNumbers(limit){
-	var number = 1, sumAmicableNum = 0;
-	var oAmicableNum = {};
+const amicableNumbers = limit => {
+	let number = 1;
+	let sumAmicableNum = 0;
+	let amicableNums = new Set([]);
 	while (number < limit) {
-		var sumDiv = sumDivisors(number);
-		if (sumDivisors(sumDiv) == number && number !== sumDiv) {
-			oAmicableNum[number] = "";
-			oAmicableNum[sumDiv] = "";
+		let sumDiv = getSumDivisors(number);
+		if (getSumDivisors(sumDiv) === number && number !== sumDiv) {
+			amicableNums.add(number);
+			amicableNums.add(sumDiv);
 		}
 		number++;
 	}
-	var arr = Object.keys(oAmicableNum);
-	for (var i = 0; i < arr.length; i++)
-		sumAmicableNum += parseInt(arr[i]);
+
+	for (let num of amicableNums) {
+		sumAmicableNum += num;
+	}
 	return sumAmicableNum;
 }
 
