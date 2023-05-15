@@ -1,5 +1,3 @@
-console.time('FirstWay');
-
 const getLongestCollatzSequence = limit => {
 	let longestSequence = 0;
 	const lowestLimit = limit/2;
@@ -31,6 +29,3 @@ const getLongestCollatzSequence = limit => {
 }
 
 console.log(getLongestCollatzSequence(1000000));
-
-
-console.timeEnd('FirstWay');

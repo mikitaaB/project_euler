@@ -1,23 +1,26 @@
-//количество делителей по числу
-function countDivisors(num) {
-	var s = 0;
-	var sqrt = Math.sqrt(num);
-	for (var i = 1; i <= sqrt; i++)
-		if (num % i == 0)
-			s += 2;
-		if (num == Math.pow(sqrt, 2)) {
-			s--;
+const getTriangularNumber = num => num * (num + 1) / 2;
+
+const getCountDivisors = num => {
+	let count = 0;
+	let sqrt = Math.floor(Math.sqrt(num));
+	for (let i = 1; i <= sqrt; i++)
+		if (num % i == 0) {
+			count += 2;
 		}
-	return s;
+		if (num === sqrt * sqrt) {
+			count--;
+		}
+	return count;
 }
 
-function findNumberByCountOfDivisors(limit){
-	var num = 1, sum = 0;
-	for (var i = 1; i <= num; i++){
-		sum += i;
-		if (countDivisors(sum) > limit)
-			return sum;
+const findNumberByCountOfDivisors = limit => {
+	let num = 1;
+	let countDivisors = getCountDivisors(num);
+	while (countDivisors <= limit) {
 		num++;
+		countDivisors = getCountDivisors(getTriangularNumber(num));
 	}
+	return getTriangularNumber(num);
 }
+
 console.log(findNumberByCountOfDivisors(500));
